@@ -65,8 +65,7 @@ const Reports = () => {
             <Card key={recording.id}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <div className="flex flex-col">
-                  <CardTitle className="text-lg font-medium">{recording.title}</CardTitle>
-                  <div className="flex items-center mt-1">
+                  <div className="flex items-center">
                     <AlertTriangle className={`h-4 w-4 mr-2 ${getCategoryColor(recording.category)}`} />
                     <span className={`text-sm ${getCategoryColor(recording.category)}`}>
                       {recording.category}
