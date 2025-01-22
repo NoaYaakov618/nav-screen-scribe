@@ -7,7 +7,12 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold mb-6">Voice Recorder</h1>
+      <img 
+        src="/lovable-uploads/a16bfa8c-0252-4a65-bc7c-6981fcc0bb4b.png" 
+        alt="She Proves Logo" 
+        className="w-48 mb-8"
+      />
+      <h1 className="text-4xl font-bold mb-6">Welcome Shir!</h1>
       <p className="text-muted-foreground mb-8 text-center max-w-md">
         Record your voice with high quality and access your recordings anytime.
       </p>
@@ -17,7 +22,7 @@ const Home = () => {
         onClick={() => navigate("/record")}
       >
         <Mic className="w-5 h-5" />
-        Start Recording
+        Start
       </Button>
     </div>
   );
