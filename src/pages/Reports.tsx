@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileAudio, Clock, AlertTriangle } from "lucide-react";
 
-type ViolenceCategory = "Physical violence" | "Economic violence" | "Sexual violence";
+type ViolenceCategory = "Physical violence" | "Economic violence" | "Sexual violence" | "Sexual Assault";
 
 // Mock data for demonstration
 const recordings = [
@@ -11,7 +11,7 @@ const recordings = [
     date: "2024-03-10",
     time: "14:30",
     duration: "02:15",
-    title: "Voice Note 1",
+    title: "Physical violence",
     category: "Physical violence" as ViolenceCategory
   },
   {
@@ -19,7 +19,7 @@ const recordings = [
     date: "2024-03-10",
     time: "16:45",
     duration: "01:30",
-    title: "Voice Note 2",
+    title: "Economic violence",
     category: "Economic violence" as ViolenceCategory
   },
   {
@@ -27,8 +27,16 @@ const recordings = [
     date: "2024-03-09",
     time: "09:15",
     duration: "03:45",
-    title: "Voice Note 3",
+    title: "Sexual violence",
     category: "Sexual violence" as ViolenceCategory
+  },
+  {
+    id: 4,
+    date: "2024-03-09",
+    time: "11:30",
+    duration: "04:20",
+    title: "Sexual Assault",
+    category: "Sexual Assault" as ViolenceCategory
   }
 ];
 
@@ -40,6 +48,8 @@ const getCategoryColor = (category: ViolenceCategory) => {
       return "text-yellow-500";
     case "Sexual violence":
       return "text-purple-500";
+    case "Sexual Assault":
+      return "text-pink-500";
     default:
       return "text-gray-500";
   }
