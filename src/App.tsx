@@ -3,7 +3,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { Navigation } from "./components/Navigation";
+import Home from "./pages/Home";
+import Record from "./pages/Record";
+import Reports from "./pages/Reports";
 
 const queryClient = new QueryClient();
 
@@ -13,9 +16,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-        </Routes>
+        <div className="min-h-screen pb-16 md:pb-0 md:pt-16">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/record" element={<Record />} />
+            <Route path="/reports" element={<Reports />} />
+          </Routes>
+          <Navigation />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
