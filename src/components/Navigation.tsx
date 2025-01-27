@@ -1,4 +1,4 @@
-import { Home, Mic, FileText } from "lucide-react";
+import { Home, Mic, FileText, Shield } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 export const Navigation = () => {
@@ -36,6 +36,15 @@ export const Navigation = () => {
           >
             <FileText className="h-5 w-5" />
             <span className="text-xs">Reports</span>
+          </Link>
+          <Link
+            to="/privacy"
+            className={`flex flex-col items-center space-y-1 ${
+              isActive("/privacy") ? "text-primary" : "text-muted-foreground"
+            }`}
+          >
+            <Shield className="h-5 w-5" />
+            <span className="text-xs">Privacy</span>
           </Link>
         </div>
       </div>

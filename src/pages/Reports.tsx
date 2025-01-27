@@ -1,17 +1,26 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { FileAudio, Clock, AlertTriangle } from "lucide-react";
+import { FileAudio, Clock, AlertTriangle, MapPin } from "lucide-react";
 
 type ViolenceCategory = "Physical violence" | "Economic violence" | "Sexual violence" | "Sexual Assault";
 
-// Mock data for demonstration
+const israeliCities = [
+  "Tel Aviv", "Jerusalem", "Haifa", "Beer Sheva", "Eilat",
+  "Netanya", "Herzliya", "Ramat Gan", "Ashdod", "Ashkelon"
+];
+
+const getRandomLocation = () => {
+  const randomIndex = Math.floor(Math.random() * israeliCities.length);
+  return israeliCities[randomIndex];
+};
+
 const recordings = [
   {
     id: 1,
     date: "2024-03-10",
     time: "14:30",
     duration: "02:15",
-    title: "Physical violence",
+    location: getRandomLocation(),
     category: "Physical violence" as ViolenceCategory
   },
   {
@@ -19,7 +28,7 @@ const recordings = [
     date: "2024-03-10",
     time: "16:45",
     duration: "01:30",
-    title: "Economic violence",
+    location: getRandomLocation(),
     category: "Economic violence" as ViolenceCategory
   },
   {
@@ -27,7 +36,7 @@ const recordings = [
     date: "2024-03-09",
     time: "09:15",
     duration: "03:45",
-    title: "Sexual violence",
+    location: getRandomLocation(),
     category: "Sexual violence" as ViolenceCategory
   },
   {
@@ -35,7 +44,7 @@ const recordings = [
     date: "2024-03-09",
     time: "11:30",
     duration: "04:20",
-    title: "Sexual Assault",
+    location: getRandomLocation(),
     category: "Sexual Assault" as ViolenceCategory
   }
 ];
@@ -67,7 +76,7 @@ const Reports = () => {
                 <div className="flex flex-col">
                   <div className="flex items-center">
                     <AlertTriangle className={`h-4 w-4 mr-2 ${getCategoryColor(recording.category)}`} />
-                    <span className={`text-sm ${getCategoryColor(recording.category)}`}>
+                    <span className={getCategoryColor(recording.category)}>
                       {recording.category}
                     </span>
                   </div>
@@ -79,6 +88,10 @@ const Reports = () => {
                   <div>
                     <div>{recording.date}</div>
                     <div>{recording.time}</div>
+                    <div className="flex items-center mt-1">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      {recording.location}
+                    </div>
                   </div>
                   <div className="flex items-center">
                     <Clock className="mr-1 h-4 w-4" />

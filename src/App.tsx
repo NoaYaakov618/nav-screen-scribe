@@ -7,6 +7,7 @@ import { Navigation } from "./components/Navigation";
 import Home from "./pages/Home";
 import Record from "./pages/Record";
 import Reports from "./pages/Reports";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/record" element={<Record />} />
             <Route path="/reports" element={<Reports />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
           <Navigation />
         </div>

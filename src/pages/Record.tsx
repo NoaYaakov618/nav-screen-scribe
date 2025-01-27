@@ -1,9 +1,19 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const Record = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [timer, setTimer] = useState(0);
-  const timerRef = useRef<NodeJS.Timer | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    startRecording();
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, []);
 
   const startRecording = () => {
     setIsRecording(true);
@@ -23,7 +33,7 @@ const Record = () => {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -31,19 +41,23 @@ const Record = () => {
       <div className="text-4xl font-bold mb-8">{formatTime(timer)}</div>
       <div className="space-x-4">
         {!isRecording ? (
-          <button
+          <Button
+            variant="destructive"
+            size="lg"
             onClick={startRecording}
-            className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600 transition-colors"
+            className="rounded-full px-8"
           >
             Start Recording
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
+            variant="secondary"
+            size="lg"
             onClick={stopRecording}
-            className="bg-gray-500 text-white px-6 py-3 rounded-full hover:bg-gray-600 transition-colors"
+            className="rounded-full px-8"
           >
-            Stop Recording
-          </button>
+            Stop
+          </Button>
         )}
       </div>
     </div>

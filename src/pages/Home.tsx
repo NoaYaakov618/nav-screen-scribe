@@ -10,11 +10,11 @@ const Home = () => {
       <img 
         src="/lovable-uploads/a16bfa8c-0252-4a65-bc7c-6981fcc0bb4b.png" 
         alt="She Proves Logo" 
-        className="w-48 mb-8"
+        className="w-72 mb-8"
       />
       <h1 className="text-4xl font-bold mb-6">Welcome Shir!</h1>
       <p className="text-muted-foreground mb-8 text-center max-w-md">
-        Record your voice with high quality and access your recordings anytime.
+        Press 'Start' to run the app in the background. We will detect and record instances of violence.
       </p>
       <Button
         size="lg"
