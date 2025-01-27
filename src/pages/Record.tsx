@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 import SoundVisualizer from "@/components/SoundVisualizer";
 
 const Record = () => {
@@ -9,7 +10,6 @@ const Record = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Start recording immediately when component mounts
     startRecording();
     return () => {
       if (timerRef.current) {
@@ -26,15 +26,25 @@ const Record = () => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
     }
-    setIsRecording(false);
-    setShowTimer(false);
-    setTimer(0);
+    
+    // Show notification toast
+    toast({
+      title: "Recording saved",
+      description: "Your recording has been collected and saved successfully.",
+      duration: 2000,
+    });
+
+    // Delay the state changes
+    setTimeout(() => {
+      setIsRecording(false);
+      setShowTimer(false);
+      setTimer(0);
+    }, 2000);
   };
 
   const handleSoundThreshold = () => {
     if (!showTimer) {
       setShowTimer(true);
-      // Start timer when sound threshold is exceeded
       timerRef.current = setInterval(() => {
         setTimer((prev) => prev + 1);
       }, 1000);
@@ -49,6 +59,8 @@ const Record = () => {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]">
+      <h1 className="text-3xl font-bold mb-8">We are here for you!</h1>
+      
       {showTimer && (
         <div className="text-4xl font-bold mb-8">{formatTime(timer)}</div>
       )}
@@ -56,6 +68,9 @@ const Record = () => {
       {isRecording && !showTimer && (
         <div className="mb-8 w-full max-w-md">
           <SoundVisualizer onSoundThreshold={handleSoundThreshold} />
+          <p className="text-center text-muted-foreground mt-4">
+            A voice detection recording is now being activated.
+          </p>
         </div>
       )}
       
