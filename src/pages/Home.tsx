@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen flex flex-col items-center p-4 pt-8">
       <div className="flex flex-col items-center">
         <img 
           src="/lovable-uploads/a16bfa8c-0252-4a65-bc7c-6981fcc0bb4b.png" 

@@ -27,19 +27,19 @@ const Record = () => {
       clearInterval(timerRef.current);
     }
     
-    // Show notification toast
+    // Show notification toast with extended duration (3 seconds)
     toast({
       title: "Recording saved",
       description: "Your recording has been collected and saved successfully.",
-      duration: 2000,
+      duration: 3000,
     });
 
-    // Delay the state changes
+    // Delay the state changes to match the toast duration
     setTimeout(() => {
       setIsRecording(false);
       setShowTimer(false);
       setTimer(0);
-    }, 2000);
+    }, 3000);
   };
 
   const handleSoundThreshold = () => {
