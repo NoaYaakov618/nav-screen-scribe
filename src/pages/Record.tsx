@@ -2,12 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import SoundVisualizer from "@/components/SoundVisualizer";
+import { useNavigate } from "react-router-dom";
 
 const Record = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
   const [timer, setTimer] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     startRecording();
@@ -34,11 +36,16 @@ const Record = () => {
       duration: 3000,
     });
 
-    // Delay the state changes to match the toast duration
+    // Generate a temporary recording ID (in a real app, this would come from your backend)
+    const tempRecordingId = Date.now().toString();
+
+    // Delay the navigation to match the toast duration
     setTimeout(() => {
       setIsRecording(false);
       setShowTimer(false);
       setTimer(0);
+      // Navigate to the playback page with the recording ID
+      navigate('/recording-playback', { state: { recordingId: tempRecordingId } });
     }, 3000);
   };
 

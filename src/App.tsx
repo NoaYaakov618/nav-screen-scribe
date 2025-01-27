@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Record from "./pages/Record";
 import Reports from "./pages/Reports";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RecordingPlayback from "./pages/RecordingPlayback";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/record" element={<Record />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/recording-playback" element={<RecordingPlayback />} />
           </Routes>
           <Navigation />
         </div>
