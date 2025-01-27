@@ -69,7 +69,7 @@ const Record = () => {
         <div className="mb-8 w-full max-w-md">
           <SoundVisualizer onSoundThreshold={handleSoundThreshold} />
           <p className="text-center text-muted-foreground mt-4">
-            A voice detection recording is now being activated.
+            Violence voice detection
           </p>
         </div>
       )}
