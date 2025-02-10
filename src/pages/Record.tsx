@@ -72,7 +72,10 @@ const Record = () => {
       </h1>
       
       {showTimer && (
-        <div className="text-4xl font-bold mb-8">{formatTime(timer)}</div>
+        <div className="flex items-center gap-3 text-4xl font-bold mb-8">
+          {formatTime(timer)}
+          <div className="w-3 h-3 rounded-full bg-red-500 recording-pulse relative" />
+        </div>
       )}
       
       {isRecording && !showTimer && (
