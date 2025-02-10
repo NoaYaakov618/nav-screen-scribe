@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
@@ -66,7 +67,9 @@ const Record = () => {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]">
-      <h1 className="text-3xl font-bold mb-8">We are here for you!</h1>
+      <h1 className="text-3xl font-bold mb-8">
+        {showTimer ? "Violence Detection, Recording Started" : "We are here for you!"}
+      </h1>
       
       {showTimer && (
         <div className="text-4xl font-bold mb-8">{formatTime(timer)}</div>
