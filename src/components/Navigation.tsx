@@ -1,9 +1,10 @@
+
 import { Home, Plus, ListChecks, ShieldAlert } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Navigation = () => {
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const location = useLocation();
 
   // Don't show navigation on splash screen
